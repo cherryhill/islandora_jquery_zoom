@@ -65,9 +65,9 @@ function islandora_jquery_zoom_islandora_viewer_info() {
  *   HTML repersentation of the OpenSeadragon viewer
  */
 function islandora_jquery_zoom_callback($params = NULL, $fedora_object = NULL) {
-  if (isset($params['image_url'])) {
+  if (isset($params['path'])) {
     $image = theme('image', $params);
-    return theme('islandora_jquery_zoom_viewer', array('image' => $uri, 'fedora_object' => $fedora_object));
+    return theme('islandora_jquery_zoom_viewer', array('image' => $image, 'fedora_object' => $fedora_object));
   }
 }
 
