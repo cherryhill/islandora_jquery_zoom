@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Hooks and callbacks for this module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function islandora_jquery_zoom_menu() {
+  return array(
+    'admin/islandora/jqueryzoom' => array(
+      'title' => 'jQuery Zoom',
+      'description' => 'Configure the jQuery Zoom viewer.',
+      'page callback' => 'drupal_get_form',
+      'access arguments' => array('administer site configuration'),
+      'page arguments' => array('islandora_jquery_zoom_admin'),
+      'file' => 'includes/admin.form.inc',
+      'type' => MENU_NORMAL_ITEM,
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function islandora_jquery_zoom_theme() {
+  return array(
+    'islandora_jquery_zoom_viewer' => array(
+      'variables' => array(
+        'uri' => '',
+      ),
+      'template' => 'theme/islandora-jquery-zoom',
+    ),
+  );
+}
+
+/**
+ * Implements hook_islandora_viewer_info().
+ */
+function islandora_jquery_zoom_islandora_viewer_info() {
+  return array(
+    'islandora_jquery_zoom' => array(
+      'label' => t('jQuery Zoom'),
+      'description' => t('jQuery Zoom viewer for large web images.'),
+      'configuration' => 'admin/islandora/jqueryzoom',
+      'callback' => 'islandora_jquery_zoom_callback',
+        // DZI has xml as mimetype? Not sure how to handle that.
+      'mimetype' => array('image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'),
+    ),
+  );
+}
+
+/**
+ * Callback function for the viewer.
+ *
+ * @param array $params
+ *   Params required by the theme. We require the keys:
+ *   - jp2_url: The URL to the JP2 image.
+ * @param IslandoraAbstractObject $fedora_object
+ *   The object that we are viewing.
+ *
+ * @return string
+ *   HTML repersentation of the OpenSeadragon viewer
+ */
+function islandora_jquery_zoom_callback($params = NULL, $fedora_object = NULL) {
+  if (isset($params['image_url'])) {
+    $image = theme('image', $params);
+    return theme('islandora_jquery_zoom_viewer', array('image' => $uri, 'fedora_object' => $fedora_object));
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function islandora_jquery_zoom_preprocess_islandora_jquery_zoom_viewer(&$variables) {
+  // Variable fedora_object included in results, but not used.
+  $library_path = libraries_get_path('zoom');
+  $module_path = drupal_get_path('module', 'islandora_jquery_zoom');
+  drupal_add_js("$library_path/jquery.zoom.min.js");
+  drupal_add_js("$module_path/islandora_jquery_zoom.js");
+}

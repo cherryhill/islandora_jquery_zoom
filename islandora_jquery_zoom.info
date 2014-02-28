@@ -1,0 +1,8 @@
+name = Islandora jQuery Zoom
+description = "jQuery Zoom viewer for large web images"
+dependencies[] = libraries
+dependencies[] = islandora
+package = Islandora
+version = 7.x-1.0
+core = 7.x
+php = 5.3
