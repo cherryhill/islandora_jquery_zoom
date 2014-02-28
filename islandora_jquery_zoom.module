@@ -80,4 +80,5 @@ function islandora_jquery_zoom_preprocess_islandora_jquery_zoom_viewer(&$variabl
   $module_path = drupal_get_path('module', 'islandora_jquery_zoom');
   drupal_add_js("$library_path/jquery.zoom.min.js");
   drupal_add_js("$module_path/islandora_jquery_zoom.js");
+  drupal_add_css("$module_path/islandora_jquery_zoom.css");
 }

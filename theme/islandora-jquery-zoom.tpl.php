@@ -1,1 +1,1 @@
-<div class='islandora-image-zoom'><?php print $image ?></div>
+<div class='islandora-jquery-zoom'><span>Grab</span><?php print $image ?></div>

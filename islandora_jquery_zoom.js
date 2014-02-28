@@ -2,7 +2,7 @@
 
 Drupal.behaviors.islandorajqueryzoom = {
   attach: function(context) {
-    $('.islandora-image-zoom').zoom({ on: 'grab' });
+    $('.islandora-jquery-zoom').zoom({ on: 'grab' });
   }
 };
 

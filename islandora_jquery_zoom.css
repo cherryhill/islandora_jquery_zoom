@@ -1,0 +1,22 @@
+.islandora-jquery-zoom {
+  position: relative;
+}
+
+.islandora-jquery-zoom:after {
+  background: url("assets/icon.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  content: "";
+  display: block;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 33px;  
+}
+
+.islandora-jquery-zoom span {
+  color: #555555;
+  font: bold 13px/1 sans-serif;
+  position: absolute;
+  right: 28px;
+  top: 3px;
+}
