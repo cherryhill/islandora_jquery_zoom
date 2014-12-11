@@ -13,6 +13,10 @@
   width: 33px;  
 }
 
+.islandora-jquery-zoom img {
+  cursor: zoom-in;
+}
+
 .islandora-jquery-zoom span {
   color: #555555;
   font: bold 13px/1 sans-serif;
